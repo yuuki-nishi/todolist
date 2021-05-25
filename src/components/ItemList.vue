@@ -1,14 +1,22 @@
 <template>
   <div>
-    <div>ItemList</div>
+    <div><strong>未完ItemList</strong></div>
     <div v-for="item in items" :key="item.name">
-      <div class="item">
-        <div class="name">名前: {{ item.name }}</div> <!-- <div class="price">{{ item.price }} 円</div> -->
-        <div class="state">完了しているか : {{ item.state }} </div><div class="id">id : {{ item.identifier }} </div>
-       <button @click="FinishTask(item.identifier)" >かんりょ～</button>
-       <button @click="DeleteTask(item.identifier)" >消えるぜ</button>
+      <div class="item" v-if="item.state==false"><div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;"><div class="name">名前: {{ item.name }}</div>
+      <!-- <div class="price">{{ item.price }} 円</div> --><div class="state">完了しているか : {{ item.state }} </div><div class="id">id : {{ item.identifier }} </div><button @click="FinishTask(item.identifier)" >かんりょ～</button><button @click="DeleteTask(item.identifier)" >消えるぜ</button>
         <!--ここまでが各要素の記述-->
       </div>
+    </div>
+    </div>
+    <div><strong>完了ItemList</strong></div>
+    <div v-for="item in items" :key="item.name">
+      <div class="item" v-if="item.state==true">
+      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+        <div class="name">名前: {{ item.name }}</div> <!-- <div class="price">{{ item.price }} 円</div> -->
+        <div class="state">完了しているか : {{ item.state }} </div><div class="id">id : {{ item.identifier }} </div><button @click="DeleteTask(item.identifier)" >消えるぜ</button>
+        <!--ここまでが各要素の記述-->
+      </div>
+    </div>
     </div>
     <div>
       <label>
