@@ -42,10 +42,14 @@ export default {
     const addItem = () => {
       items.value.push({ name: newItemName.value, state: false, identifier : maxi.value });
       maxi.value = maxi.value + 1;
-        items.value[0].state = true;
     };
     const FinishTask = (id) =>{
-        items.value[id].state = true;
+        
+        items.value.forEach((element, index) => {
+            if (element.identifier == id) {
+                items.value[index].state = true;
+            }
+        })
     };
     
     const DeleteTask = (id) =>{
